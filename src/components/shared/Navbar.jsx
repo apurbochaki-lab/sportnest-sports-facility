@@ -1,7 +1,7 @@
 import Image from "next/image";
 import logo from '@/assets/logo.png'
 import NavLinik from "./NavLinik";
-import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
+import { ArrowRightFromSquare, Gear } from "@gravity-ui/icons";
 import { Avatar, Button, Dropdown, Label } from "@heroui/react";
 import { ImMenu } from "react-icons/im";
 import MobileNav from "./MobileNav";
