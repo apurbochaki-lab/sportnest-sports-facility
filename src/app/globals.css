@@ -1,3 +1,40 @@
+@import "@heroui/styles";
 @import "tailwindcss";
-@import "@heroui/styles"; 
 @plugin "daisyui";
+
+
+@layer utilities {
+    .btn-hover {
+        transition: all 0.3s ease;
+    }
+
+    .btn-hover:hover {
+        background: #bc6c25;
+        color: #fefae0;
+        transform: translateY(-4px) scale(1.05);
+
+        box-shadow:
+            0 10px 25px rgba(255, 255, 255, 0.35),
+            0 0 20px rgba(255, 255, 255, 0.25);
+    }
+
+
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-floating {
+    animation: floating 3s ease-in-out infinite;
+}
