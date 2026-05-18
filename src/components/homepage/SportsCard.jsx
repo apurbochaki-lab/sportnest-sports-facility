@@ -110,7 +110,7 @@ const SportsCard = ({ sport }) => {
                 </div>
 
                 {/* CTA */}
-                <Link href={`/sport-details/${_id}`}>
+                <Link href={`/all-facilities/${_id}`}>
                     <Button className="w-full bg-[#bc6c25] text-[#fefae0] font-bold text-lg hover:opacity-90 transition-all">
                         View Details
                     </Button>
