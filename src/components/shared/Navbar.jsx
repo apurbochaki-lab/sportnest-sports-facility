@@ -1,0 +1,118 @@
+import Image from "next/image";
+import logo from '@/assets/logo.png'
+import NavLinik from "./NavLinik";
+import { ArrowRightFromSquare, Gear, Persons } from "@gravity-ui/icons";
+import { Avatar, Button, Dropdown, Label } from "@heroui/react";
+import { ImMenu } from "react-icons/im";
+import MobileNav from "./MobileNav";
+import Link from "next/link";
+
+const Navbar = () => {
+
+    const isLoggedIn = true;
+
+    return (
+        <section className=" bg-[#283618] shadow-sm ">
+            <div className="navbar container mx-auto">
+                <div className="navbar-start">
+                    <div className="dropdown md:hidden">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                            <ImMenu className="text-[#fefae0] text-2xl" />
+                        </div>
+                        <ul
+                            tabIndex="-1"
+                            className="menu menu-sm dropdown-content bg-[#fefae0] rounded-box z-1 mt-3 w-52 p-2 shadow border border-black/20">
+                            <MobileNav href="/">Home</MobileNav>
+                            <MobileNav href="/all-facilities">All Facilities</MobileNav>
+                            <MobileNav href="/my-bookings">My Bookings</MobileNav>
+                            <MobileNav href="/add-facility">Add Facility</MobileNav>
+                            <MobileNav href="/manage-facilites">Manage My Facilities</MobileNav>
+                        </ul>
+                    </div>
+
+                    <div className="flex items-center gap-1">
+                        <Image src={logo} alt="Brand Logo" width={50} height={50} />
+                        <h2 className="font-extrabold text-[22px] text-[#fefae0]">SportNest</h2>
+                    </div>
+                </div>
+
+                <ul className="navbar-center gap-6 hidden md:flex">
+                    <NavLinik href="/">Home</NavLinik>
+                    <NavLinik href="/all-facilities">All Facilities</NavLinik>
+                    <NavLinik href="/my-bookings">My Bookings</NavLinik>
+                    <NavLinik href="/add-facility">Add Facility</NavLinik>
+                    <NavLinik href="/manage-facilities">Manage My Facilities</NavLinik>
+                </ul>
+
+                <div className="navbar-end ">
+                    {isLoggedIn &&
+                        <Dropdown>
+                            <Dropdown.Trigger className="rounded-full">
+                                <Avatar>
+                                    <Avatar.Image
+                                        alt="Junior Garcia"
+                                        src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"
+                                    />
+                                    <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+                                </Avatar>
+                            </Dropdown.Trigger>
+                            <Dropdown.Popover>
+                                <div className="px-3 pt-3 pb-1">
+                                    <div className="flex items-center gap-2">
+                                        <Avatar size="sm">
+                                            <Avatar.Image
+                                                alt="Jane"
+                                                src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/orange.jpg"
+                                            />
+                                            <Avatar.Fallback delayMs={600}>JD</Avatar.Fallback>
+                                        </Avatar>
+                                        <div className="flex flex-col gap-0">
+                                            <p className="text-lg leading-5 font-medium ">Jane Doe</p>
+                                            <p className="text-sm leading-none text-muted">jane@example.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <Dropdown.Menu>
+
+                                    <Dropdown.Item id="my-Bookings" textValue="MyBookings">
+                                        <Link href="/my-bookings">
+                                            <Label>My Bookings</Label>
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item id="add-facility" textValue="AddFacility">
+                                        <Link href="/all-facilities">
+                                            <Label>Add Facilities</Label>
+                                        </Link>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item id="manage-facilities" textValue="ManageFacilities">
+                                        <div className="flex w-full items-center justify-between gap-2">
+                                            <Link href="/manage-facilities">
+                                                <Label>Manage My Facilities</Label>
+                                            </Link>
+                                            <Gear className="size-3.5 text-muted" />
+                                        </div>
+                                    </Dropdown.Item>
+
+                                    <Dropdown.Item id="logout" textValue="Logout" variant="danger">
+                                        <div className="flex w-full items-center justify-between gap-2">
+                                            <Label>Log Out</Label>
+                                            <ArrowRightFromSquare className="size-3.5 text-danger" />
+                                        </div>
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown.Popover>
+                        </Dropdown>
+                    }
+
+                    {!isLoggedIn &&
+                        <div>
+                            <Button variant="tertiary" className="bg-[#fefae0] text-[16px] font-semibold">Login Now</Button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Navbar;
