@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NavLinik = ({ href, children }) => {
+const NavLink = ({ href, children }) => {
 
     const pathName = usePathname()
 
@@ -16,4 +16,4 @@ const NavLinik = ({ href, children }) => {
     );
 };
 
-export default NavLinik;
+export default NavLink;

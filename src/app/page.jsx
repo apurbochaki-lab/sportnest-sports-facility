@@ -14,7 +14,6 @@ export default function Home() {
       <WhoWeAre/>
       <WhyTrain/>
       
-      <Footer/>
     </div>
   );
 }

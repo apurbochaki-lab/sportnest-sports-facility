@@ -1,6 +1,7 @@
 import { Khand } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
 const khandFont = Khand({
   weight: ["400", "500", "600", "700"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

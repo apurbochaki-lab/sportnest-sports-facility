@@ -8,7 +8,7 @@ const AllFacilitiesPage = async () => {
     console.log(sports)
 
     return (
-        <section className='bg-[#fefae0]'>
+        <section className='bg-[#fefae0] pb-20'>
             <div className="container mx-auto">
                 <h2 className='text-center text-5xl font-bold pt-10 pb-5'>All Facilities</h2>
 

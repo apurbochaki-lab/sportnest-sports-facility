@@ -37,18 +37,19 @@ const RunningText = () => {
     ];
 
     return (
-        <section className="bg-[#fefae0]">
-            <h2 className="text-center text-4xl font-bold py-5 text-[#283618] ">Our Sponsors</h2>
+        <section className="bg-[linear-gradient(180deg,#334F28_0%,#879973_50%,#727A4B_100%)]">
+            <h2 className="text-center text-4xl font-bold py-5 text-[#fefae0] ">Our Sponsors</h2>
             <Marquee pauseOnHover={true} className="rounded-lg shadow-sm">
                 {
-                    sponsors.map(spon => <div key={spon.id} className=" bg-[#606c38]">
-                        <div className=" p-5">
-                            <span className=" bg-[#fefae0] px-5 py-3 rounded-xl">
-                                {spon.name}
-                            </span>
-                        </div>
+                    sponsors.map(spon =>
+                        <div key={spon.id} className="pb-5">
+                            <div className="p-5 ">
+                                <span className=" bg-[#fefae0] text-black font-medium px-5 py-3 rounded-xl">
+                                    {spon.name}
+                                </span>
+                            </div>
 
-                    </div>)
+                        </div>)
                 }
             </Marquee>
         </section>

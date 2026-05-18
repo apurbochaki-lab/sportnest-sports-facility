@@ -1,6 +1,6 @@
 import Image from "next/image";
 import logo from '@/assets/logo.png'
-import NavLinik from "./NavLinik";
+import NavLink from "./NavLink";
 import { ArrowRightFromSquare, Gear } from "@gravity-ui/icons";
 import { Avatar, Button, Dropdown, Label } from "@heroui/react";
 import { ImMenu } from "react-icons/im";
@@ -30,18 +30,18 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <div className="flex items-center gap-1">
+                    <Link href={"/"} className="flex items-center gap-1 cursor-pointer">
                         <Image src={logo} alt="Brand Logo" width={50} height={50} />
                         <h2 className="font-extrabold text-[22px] text-[#fefae0]">SportNest</h2>
-                    </div>
+                    </Link>
                 </div>
 
                 <ul className="navbar-center gap-6 hidden md:flex">
-                    <NavLinik href="/">Home</NavLinik>
-                    <NavLinik href="/all-facilities">All Facilities</NavLinik>
-                    <NavLinik href="/my-bookings">My Bookings</NavLinik>
-                    <NavLinik href="/add-facility">Add Facility</NavLinik>
-                    <NavLinik href="/manage-facilities">Manage My Facilities</NavLinik>
+                    <NavLink href="/">Home</NavLink>
+                    <NavLink href="/all-facilities">All Facilities</NavLink>
+                    <NavLink href="/my-bookings">My Bookings</NavLink>
+                    <NavLink href="/add-facility">Add Facility</NavLink>
+                    <NavLink href="/manage-facilities">Manage My Facilities</NavLink>
                 </ul>
 
                 <div className="navbar-end ">
