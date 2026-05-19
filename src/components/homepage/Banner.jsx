@@ -25,7 +25,7 @@ const Banner = () => {
                         src={heroImg}
                         alt='Hero Image'
                         width={600} height={300}
-                        className='rounded-xl shadow-md hover:scale-105 animate-floating'
+                        className='rounded-xl shadow-md hover:scale-105 animate-floating transition-all duration-500 ease-in-out'
                     />
                 </div>
 

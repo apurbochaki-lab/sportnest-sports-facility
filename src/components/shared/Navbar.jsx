@@ -9,7 +9,7 @@ import Link from "next/link";
 
 const Navbar = () => {
 
-    const isLoggedIn = true;
+    const isLoggedIn = false;
 
     return (
         <section className=" bg-[#283618]/95 shadow-sm sticky inset-0 z-10 backdrop-blur-md">
@@ -105,9 +105,9 @@ const Navbar = () => {
                     }
 
                     {!isLoggedIn &&
-                        <div>
+                        <Link href={"/login"}>
                             <Button variant="tertiary" className="bg-[#fefae0] text-[16px] font-semibold">Login Now</Button>
-                        </div>
+                        </Link>
                     }
                 </div>
             </div>

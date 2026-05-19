@@ -1,3 +1,4 @@
+import BookingCard from "@/components/sports-details-page/BookingCard";
 import { getDataById } from "@/lib/data";
 import Image from "next/image";
 import {
@@ -44,7 +45,7 @@ const sportsDetailsPage = async ({ params }) => {
                 <div className="grid md:grid-cols-2 gap-10 items-center">
 
                     {/* IMAGE */}
-                    <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-xl border border-[#dda15e]">
+                    <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-xl border border-[#dda15e] hover:scale-102 transition-all duration-500 hover:-translate-y-3">
                         <Image
                             src={image}
                             alt={title}
@@ -67,16 +68,22 @@ const sportsDetailsPage = async ({ params }) => {
                             {description}
                         </p>
 
-                        <div className="flex flex-wrap gap-3 text-md font-medium">
-                            <span className="px-3 py-1 bg-[#606c38] text-[#fefae0] rounded-full">
-                                {category}
-                            </span>
-                            <span className="px-3 py-1 bg-[#283618] text-[#fefae0] rounded-full">
-                                {duration}
-                            </span>
-                        </div>
+                        <div className="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <div className="flex flex-wrap gap-3 text-md font-medium">
+                                    <span className="px-3 py-1 bg-[#606c38] text-[#fefae0] rounded-full">
+                                        {category}
+                                    </span>
+                                    <span className="px-3 py-1 bg-[#283618] text-[#fefae0] rounded-full">
+                                        {duration}
+                                    </span>
+                                </div>
 
-                        <h2 className="text-3xl md:text-4xl pt-8 font-semibold text-[#606c38]">Price : ${price}</h2>
+                                <h2 className="text-3xl md:text-4xl pt-8 font-semibold text-[#606c38]">Price : ${price}</h2>
+                            </div>
+
+                            {/* <BookingCard/> */}
+                        </div>
                     </div>
                 </div>
 
@@ -133,15 +140,15 @@ const sportsDetailsPage = async ({ params }) => {
                 </div>
 
                 {/* EXTRA INFO */}
-                <div className="mt-10 bg-[#283618] text-[#fefae0] p-8 rounded-2xl shadow-xl">
+                <div className="mt-10 bg-[#283618] text-[#fefae0] p-8 rounded-2xl shadow-xl max-w-[350px] mx-auto">
                     <h2 className="text-3xl font-bold mb-4 text-[#dda15e]">
                         Additional Info
                     </h2>
 
-                    <div className="grid md:grid-cols-2 gap-4 text-lg">
+                    <div className="text-lg">
                         <p className="text-xl font-medium"><span className="text-[#dda15e]">Capacity:</span> {capacity}</p>
                         <p className="text-xl font-medium"><span className="text-[#dda15e]">Level:</span> {level}</p>
-                        <p className="text-xl font-medium"><span className="text-[#dda15e]">Available Days:</span> {availableDays?.join(", ")}</p>
+                        {/* <p className="text-xl font-medium"><span className="text-[#dda15e]">Available Days:</span> {availableDays?.join(", ") || "Sun - Fri"}</p> */}
                         <p className="text-xl font-medium"><span className="text-[#dda15e]">Category:</span> {category}</p>
                     </div>
                 </div>

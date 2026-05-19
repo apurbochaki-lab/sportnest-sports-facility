@@ -14,7 +14,6 @@ const SportsCard = ({ sport }) => {
         description,
         category,
         duration,
-        label,
         level,
         location,
         price,
