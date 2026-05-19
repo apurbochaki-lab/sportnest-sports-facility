@@ -22,7 +22,7 @@ const Navbar = async () => {
         headers: await headers()
     })
     const user = session?.user;
-    console.log("session : ", user)
+    // console.log("session : ", user)
 
     const isLoggedIn = true;
 

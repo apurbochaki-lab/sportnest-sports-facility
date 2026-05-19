@@ -81,7 +81,7 @@ const sportsDetailsPage = async ({ params }) => {
                                 <h2 className="text-3xl md:text-4xl pt-8 font-semibold text-[#606c38]">Price : ${price}</h2>
                             </div>
 
-                            <BookingCard/>
+                            <BookingCard sportsDetails={sportsDetails} />
                         </div>
                     </div>
                 </div>

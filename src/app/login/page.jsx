@@ -27,11 +27,11 @@ const LoginPage = () => {
             callbackURL: "/"
         })
         if (!error) {
-            toast.success("Login Successful✅")
+            toast.success("Login Successful")
             redirect('/')
         }
         else {
-            toast.error("Invalid email or password!⚠️")
+            toast.error("Invalid email or password!")
         }
 
         console.log("From Login Page : ", data, error)

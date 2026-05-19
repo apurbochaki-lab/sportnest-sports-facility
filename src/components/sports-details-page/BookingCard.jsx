@@ -1,12 +1,52 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Card, DateField, Label } from "@heroui/react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
-const BookingCard = () => {
+const BookingCard = ({ sportsDetails }) => {
+    const { _id, title, image, price, rating, } = sportsDetails;
+
+    // Session Data
+    const { data: session } = authClient.useSession()
+    const user = session?.user;
+    // console.log(user)
 
     const [date, setDate] = useState(null)
-    console.log(new Date(date))
+    // console.log(new Date(date))
+
+    const handleBooking = async() => {
+        const bookingData = {
+            userName: user?.name,
+            userEmail: user?.email,
+            userImage: user?.image,
+            userId: user?.id,
+            sportsId: _id,
+            sportsTitle: title,
+            sportsImage: image,
+            price,
+            rating,
+            bookingDate: new Date(date)
+        }
+        // console.log(bookingData)
+
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/bookings`, {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(bookingData)
+        })
+        const data = await res.json();
+        console.log(data)
+        if (data.acknowledged) {
+            toast.success("Booking Done")
+        }
+        else {
+            toast.error("Something went wrong! Try later.")
+        }
+    }
 
     return (
         <div className="">
@@ -18,7 +58,7 @@ const BookingCard = () => {
                         <DateField.Input>{(segment) => <DateField.Segment segment={segment} />}</DateField.Input>
                     </DateField.Group>
                 </DateField>
-                <Button className="w-full bg-[#283618] text-[#fefae0] mt-5 text-lg font-semibold">Book Now</Button>
+                <Button onClick={handleBooking} className="w-full bg-[#283618] text-[#fefae0] mt-5 text-lg font-semibold">Book Now</Button>
             </Card>
         </div>
     );

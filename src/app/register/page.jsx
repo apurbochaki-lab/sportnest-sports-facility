@@ -34,7 +34,7 @@ const RegisterPage = () => {
         else {
             toast.error("Something went wrong!")
         }
-        console.log(data, error)
+        // console.log(data, error)
     }
 
     const handleGoogle = async () => {
