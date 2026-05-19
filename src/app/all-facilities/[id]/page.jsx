@@ -14,7 +14,7 @@ const sportsDetailsPage = async ({ params }) => {
     const { id } = await params;
 
     const sportsDetails = await getDataById(id)
-    console.log(sportsDetails)
+    // console.log(sportsDetails)
 
     const {
         title,
@@ -29,7 +29,6 @@ const sportsDetailsPage = async ({ params }) => {
         location,
         rating,
         trainer,
-        availableDays,
         timeSlot,
         level,
         status,
@@ -68,7 +67,7 @@ const sportsDetailsPage = async ({ params }) => {
                             {description}
                         </p>
 
-                        <div className="grid md:grid-cols-2 gap-5">
+                        <div className="grid md:grid-cols-2 gap-5 md:pt-5">
                             <div>
                                 <div className="flex flex-wrap gap-3 text-md font-medium">
                                     <span className="px-3 py-1 bg-[#606c38] text-[#fefae0] rounded-full">
@@ -82,7 +81,7 @@ const sportsDetailsPage = async ({ params }) => {
                                 <h2 className="text-3xl md:text-4xl pt-8 font-semibold text-[#606c38]">Price : ${price}</h2>
                             </div>
 
-                            {/* <BookingCard/> */}
+                            <BookingCard/>
                         </div>
                     </div>
                 </div>

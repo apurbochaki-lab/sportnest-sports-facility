@@ -24,7 +24,7 @@ const SportsCard = ({ sport }) => {
         timeSlot,
     } = sport;
 
-    console.log(sport)
+    // console.log(sport)
     return (
         <Card className="bg-[#606c38] text-[#fefae0] overflow-hidden border border-[#283618] shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02]">
 

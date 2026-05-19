@@ -1,7 +1,11 @@
+import dns from "node:dns/promises";
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
 import { Khand } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import { Toaster } from "react-hot-toast";
 
 const khandFont = Khand({
   weight: ["400", "500", "600", "700"],
@@ -13,6 +17,7 @@ export const metadata = {
   description: "Best sports training facilities",
 };
 
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -21,9 +26,11 @@ export default function RootLayout({ children }) {
       className={`${khandFont.className} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar/>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
+
+        <Toaster />
       </body>
     </html>
   );

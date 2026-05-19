@@ -1,18 +1,54 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Card, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 
 
 const RegisterPage = () => {
+    const [showPass, setShowPass] = useState(false)
+
+    const handleRegister = async (e) => {
+        e.preventDefault()
+
+        const formData = new FormData(e.target);
+        const { name, email, password, image } = Object.fromEntries(formData.entries());
+
+        const { data, error } = await authClient.signUp.email({
+            name,
+            email,
+            password,
+            image: image || 'https://www.w3schools.com/howto/img_avatar.png',
+        })
+        if (!error) {
+            toast.success("Register Successful! Please Login")
+            redirect('/login')
+        }
+        else {
+            toast.error("Something went wrong!")
+        }
+        console.log(data, error)
+    }
+
+    const handleGoogle = async () => {
+        await authClient.signIn.social({
+            provider: "google"
+        })
+    }
+
     return (
         <div className="bg-gradient-to-br from-[#283618] via-[#4f6f52] to-[#a3b18a]">
             <Card className="bg-gradient-to-br from-[#fffdf6] via-[#fefae0] to-[#f5f1dc] my-20 p-10 max-w-md mx-auto shadow-2xl">
                 <div>
                     <h2 className="text-center text-3xl font-bold mb-5 text-[#606c38]">Register Your Account</h2>
-                    <Button className="w-full rounded-md shadow-md border border-black/10" variant="tertiary">
+                    <Button onClick={handleGoogle} className="w-full rounded-md shadow-md border border-black/10" variant="tertiary">
                         <Icon icon="devicon:google" />
                         Sign in with Google
                     </Button>
@@ -20,7 +56,7 @@ const RegisterPage = () => {
                 <div className="divider text-muted">OR Register With Email</div>
 
                 <div className="w-full flex justify-center">
-                    <Form className="flex flex-col gap-4 w-full max-w-md">
+                    <Form onSubmit={handleRegister} className="flex flex-col gap-4 w-full max-w-md">
                         <TextField
                             className="w-full"
                             isRequired
@@ -49,10 +85,10 @@ const RegisterPage = () => {
                             <FieldError />
                         </TextField>
                         <TextField
-                            className="w-full"
+                            className="w-full relative"
                             isRequired
                             name="password"
-                            type="password"
+                            type={showPass ? "text" : "password"}
                             validate={(value) => {
 
                                 if (value.length < 6) {
@@ -78,6 +114,15 @@ const RegisterPage = () => {
                             />
 
                             <FieldError />
+
+                            <button
+                                type="button"
+                                className="absolute top-[36px] right-3 cursor-pointer"
+                            >
+                                <span onClick={() => setShowPass(!showPass)}>
+                                    {showPass ? <IoEyeOff /> : <FaEye />}
+                                </span>
+                            </button>
                         </TextField>
 
                         <TextField
@@ -96,7 +141,7 @@ const RegisterPage = () => {
                                 Reset
                             </Button>
 
-                            <Button type="submit" className="bg-[#2d7930] hover:bg-[#33b42f] text-[#fefae0] font-semibold rounded-md">
+                            <Button type="submit" className="bg-[#3153c2] hover:bg-[#2d6df7] text-[#fefae0] font-semibold rounded-md">
                                 <Check />
                                 Register
                             </Button>
