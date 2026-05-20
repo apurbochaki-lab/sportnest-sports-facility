@@ -27,6 +27,7 @@ const BookingCard = ({ sportsDetails }) => {
             sportsImage: image,
             price,
             rating,
+            status: "Pending",
             bookingDate: new Date(date)
         }
         // console.log(bookingData)
