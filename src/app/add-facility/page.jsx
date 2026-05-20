@@ -1,11 +1,15 @@
 'use client'
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Card } from "@heroui/react";
 import { redirect } from "next/navigation";
 
 const AddFacilityPage = () => {
 
-    const handleAddSports = async(e) => {
+    const {data: session} = authClient.useSession()
+    const userEmail = session?.user?.email;
+
+    const handleAddSports = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
@@ -15,7 +19,7 @@ const AddFacilityPage = () => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`, {
             method: "POST",
             headers: {
-                'content-type' : 'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(sportsData)
         })
@@ -227,6 +231,16 @@ const AddFacilityPage = () => {
                             <div className="flex flex-col gap-1">
                                 <label className="text-sm font-semibold text-[#283618]">Image URL <span className="text-[#bc6c25]">*</span></label>
                                 <input type="url" name="image" placeholder="https://example.com/image.jpg"
+                                    className="w-full px-3.5 py-2.5 bg-white border-[1.5px] border-[#c8c4a0] rounded-xl text-sm text-[#283618] outline-none focus:border-[#606c38] focus:ring-2 focus:ring-[#606c38]/20 transition-all" />
+                            </div>
+                        </div>
+                        <div>
+                            <h2 className="text-xs font-bold uppercase tracking-widest text-[#606c38] border-b-2 border-[#dda15e] pb-1.5 mb-4">
+                                📩 Contact Email
+                            </h2>
+                            <div className="flex flex-col gap-1">
+                                <label className="text-sm font-semibold text-[#283618]">Please enter your contact email <span className="text-[#bc6c25]">*</span></label>
+                                <input type="email" name="userEmail" placeholder="" defaultValue={userEmail}
                                     className="w-full px-3.5 py-2.5 bg-white border-[1.5px] border-[#c8c4a0] rounded-xl text-sm text-[#283618] outline-none focus:border-[#606c38] focus:ring-2 focus:ring-[#606c38]/20 transition-all" />
                             </div>
                         </div>

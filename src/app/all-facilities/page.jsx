@@ -5,7 +5,7 @@ import React from 'react';
 const AllFacilitiesPage = async () => {
 
     const sports = await getAllData()
-    console.log(sports)
+    // console.log(sports)
 
     return (
         <section className='bg-[#fefae0] pb-20'>

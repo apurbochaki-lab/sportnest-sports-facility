@@ -13,7 +13,7 @@ import { revalidatePath } from "next/cache";
 
 const Navbar = async () => {
     // For refresh route (server)
-    const refresh = async(path) => {
+    const refresh = async (path) => {
         'use server';
         return revalidatePath(path)
     }
@@ -39,9 +39,13 @@ const Navbar = async () => {
                             className="menu menu-sm dropdown-content bg-[#fefae0] rounded-box z-1 mt-3 w-52 p-2 shadow border border-black/20">
                             <MobileNav href="/">Home</MobileNav>
                             <MobileNav href="/all-facilities">All Facilities</MobileNav>
-                            <MobileNav href="/my-bookings">My Bookings</MobileNav>
-                            <MobileNav href="/add-facility">Add Facility</MobileNav>
-                            <MobileNav href="/manage-facilites">Manage My Facilities</MobileNav>
+                            {user &&
+                                <>
+                                    <MobileNav href="/my-bookings">My Bookings</MobileNav>
+                                    <MobileNav href="/add-facility">Add Facility</MobileNav>
+                                    <MobileNav href="/manage-facilites">Manage My Facilities</MobileNav>
+                                </>
+                            }
                         </ul>
                     </div>
 
@@ -54,9 +58,13 @@ const Navbar = async () => {
                 <ul className="navbar-center gap-6 hidden md:flex">
                     <NavLink href="/">Home</NavLink>
                     <NavLink href="/all-facilities">All Facilities</NavLink>
-                    <NavLink href="/my-bookings">My Bookings</NavLink>
-                    <NavLink href="/add-facility">Add Facility</NavLink>
-                    <NavLink href="/manage-facilities">Manage My Facilities</NavLink>
+                    {user &&
+                        <>
+                            <NavLink href="/my-bookings">My Bookings</NavLink>
+                            <NavLink href="/add-facility">Add Facility</NavLink>
+                            <NavLink href="/manage-facilities">Manage My Facilities</NavLink>
+                        </>
+                    }
                 </ul>
 
                 <div className="navbar-end ">
@@ -67,6 +75,7 @@ const Navbar = async () => {
                                     <Avatar.Image
                                         alt={user?.name}
                                         src={user?.image}
+                                        referrerPolicy="no-referrer"
                                     />
                                     <Avatar.Fallback delayMs={600} className="uppercase">{user?.name.split(" ")[0].slice(0, 2)}</Avatar.Fallback>
                                 </Avatar>
@@ -78,6 +87,7 @@ const Navbar = async () => {
                                             <Avatar.Image
                                                 alt={user?.name}
                                                 src={user?.image}
+                                                referrerPolicy="no-referrer"
                                             />
                                             <Avatar.Fallback delayMs={600} className="uppercase">{user?.name.split(" ")[0].slice(0, 2)}</Avatar.Fallback>
                                         </Avatar>
