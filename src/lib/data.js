@@ -1,16 +1,17 @@
-import MyBookingsPage from "@/app/my-bookings/page";
 
-export const getAllData = async() => {
+export const getAllData = async (search = "") => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`);
-    return await res.json();
+    const data = await res.json();
+    return data;
 }
 
-export const getDataById = async(id) => {
+
+export const getDataById = async (id) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports/${id}`);
     return await res.json();
 }
 
-export const getBookingsData = async() => {
+export const getBookingsData = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/bookings`);
     const Bookings = await res.json();
     return Bookings;

@@ -3,7 +3,6 @@
 import { Card, Chip, Button } from "@heroui/react";
 import Image from "next/image";
 import { FaLocationDot, FaStar } from "react-icons/fa6";
-import { MdSportsTennis } from "react-icons/md";
 import { IoTime } from "react-icons/io5";
 import Link from "next/link";
 import { ArrowRight } from "@gravity-ui/icons";
@@ -12,14 +11,12 @@ const SportsCard = ({ sport }) => {
     const {
         _id,
         title,
-        description,
         category,
         duration,
         level,
         location,
         price,
         status,
-        trainer,
         image,
         rating,
         timeSlot,

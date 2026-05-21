@@ -27,7 +27,7 @@ const Navbar = async () => {
     const isLoggedIn = true;
 
     return (
-        <section className=" bg-[#283618]/95 shadow-sm sticky inset-0 z-10 backdrop-blur-md">
+        <section className=" bg-[#283618]/95 shadow-sm sticky inset-0 z-50 backdrop-blur-md">
             <div className="navbar container mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown md:hidden">

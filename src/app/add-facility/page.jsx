@@ -33,8 +33,8 @@ const AddFacilityPage = () => {
 
     return (
         <div className="">
-            <form onSubmit={handleAddSports} className="min-h-screen bg-gradient-to-br from-[#283618]/40 via-[#3a4f20] to-[#283618]/50 py-10 px-4">
-                <Card className="max-w-4xl mx-auto bg-[#fefae0] rounded-2xl overflow-hidden shadow-2xl">
+            <form onSubmit={handleAddSports} className="min-h-screen bg-gradient-to-br from-[#283618]/40 via-[#3a4f20] to-[#283618]/50 pt-18 pb-36 px-4">
+                <Card className="max-w-4xl mx-auto bg-[#fefae0] rounded-2xl overflow-hidden shadow-2xl ">
 
                     {/* Header */}
                     <div className="bg-gradient-to-r from-[#283618] to-[#606c38] px-8 py-7 rounded-tl-xl rounded-tr-xl rounded-bl-sm rounded-br-sm shadow-md border-2 border-[#bc6c25]/70">

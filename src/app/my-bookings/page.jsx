@@ -18,9 +18,9 @@ const MyBookingsPage = async () => {
 
 
     return (
-        <section className="bg-[#f5f0e8]">
+        <section className="bg-[#f5f0e8] pb-20">
             <div className="pt-7 container mx-auto ">
-                <h2 className="text-center text-3xl md:text-4xl font-semibold text-[#283618]">My Bookings</h2>
+                <h2 className="text-center text-3xl md:text-5xl font-semibold text-[#606c38] pb-5">My Bookings</h2>
 
                 <div className="space-y-10 m-7 pb-20">
                     {

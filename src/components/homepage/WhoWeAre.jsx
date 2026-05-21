@@ -4,7 +4,7 @@ import img2 from '../../assets/who3.jpg'
 
 const WhoWeAre = () => {
     return (
-        <section className="bg-[url('/gradient-2.svg')] min-h-screen bg-cover bg-bottom bg-no-repeat pb-20">
+        <section className="bg-[url('/gradient-2.svg')] min-h-screen bg-cover bg-bottom bg-no-repeat pb-24">
             <div className='pt-10 md:pt-20 container mx-auto '>
 
                 <div className='flex flex-col-reverse md:flex-row justify-center md:gap-15'>
