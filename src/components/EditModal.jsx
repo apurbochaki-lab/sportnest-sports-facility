@@ -16,7 +16,6 @@ import {
 
 import {
     BiEdit,
-    BiPlus,
     BiX,
 } from "react-icons/bi";
 import { authClient } from "@/lib/auth-client";
@@ -54,7 +53,7 @@ const EditModal = ({ facility: facilityData }) => {
 
         const formData = new FormData(e.target);
         const itemData = Object.fromEntries(formData.entries())
-        console.log(itemData)
+        // console.log(itemData)
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`, {
             method: 'PATCH',

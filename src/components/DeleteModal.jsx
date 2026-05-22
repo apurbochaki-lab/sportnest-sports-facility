@@ -1,4 +1,6 @@
 "use client";
+
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import toast from "react-hot-toast";
 import { FiAlertCircle } from "react-icons/fi";
@@ -6,21 +8,37 @@ import { MdDelete } from "react-icons/md";
 
 const DeleteModal = ({ facility, refresh }) => {
 
-    const handleDelete = async() => {
+    const { data: session } = authClient.useSession()
+    const currentUserEmail = session?.user?.email
+    // console.log(currentUserEmail)
+
+
+    const handleDelete = async () => {
+        const { data: tokenData } = await authClient.token()
+        const token = tokenData?.token;
+        // console.log("token form frontEnd --> 🟢", token)
+
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`, {
             method: "DELETE",
             headers: {
-                'Content-Type' : 'application/json',
-                id: facility._id
+                'Content-Type': 'application/json',
+                id: facility._id,
+                currentuser: currentUserEmail,
+                authorization: `Bearer ${token}`
             }
         })
         const data = await res.json();
 
-        if (data.deletedCount > 0) {
-            toast.success("Item Deleted")
+        if (data.success) {
+            toast.success(data.message)
             refresh('/manage-facilities')
         }
-        // console.log(data);
+        else {
+            toast.error(data.message);
+            return
+        }
+
     }
 
     return (

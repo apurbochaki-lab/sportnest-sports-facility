@@ -14,7 +14,7 @@ const AddFacilityPage = () => {
 
         const formData = new FormData(e.target);
         const sportsData = Object.fromEntries(formData.entries());
-        console.log(sportsData)
+        // console.log(sportsData)
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`, {
             method: "POST",
@@ -24,7 +24,7 @@ const AddFacilityPage = () => {
             body: JSON.stringify(sportsData)
         })
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
 
         if (data.acknowledged) {
             redirect('/all-facilities')

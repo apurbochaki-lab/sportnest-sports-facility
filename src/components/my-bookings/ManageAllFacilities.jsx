@@ -50,11 +50,6 @@ const ManageAllFacilities = ({ facility }) => {
                 <div className="mt-5 flex gap-5 justify-end md:flex-col">
                     <EditModal facility={facility} />
 
-                    {/* <Button variant="outline" className="rounded-lg bg-red-700 text-white font-semibold text-lg border-white/50">
-                        <MdDelete /> Delete
-                    </Button> */}
-
-
                     <DeleteModal facility={facility} refresh={refresh} />
                 </div>
             </div>
