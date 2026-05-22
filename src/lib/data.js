@@ -1,6 +1,10 @@
 
-export const getAllData = async (search = "") => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`);
+export const getAllData = async (token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
     const data = await res.json();
     return data;
 }

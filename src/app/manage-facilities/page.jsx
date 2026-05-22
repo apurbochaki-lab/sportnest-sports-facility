@@ -3,11 +3,19 @@ import { Button } from "@heroui/react";
 import { Plus } from "@gravity-ui/icons";
 import Link from "next/link";
 import ManageAllFacilities from "@/components/my-bookings/ManageAllFacilities";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const ManageMyFacilities = async () => {
 
-    const facilities = await getAllData()
-    console.log(facilities)
+    // Identify Token
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    // console.log(token)
+
+    const facilities = await getAllData(token)
+    // console.log(facilities)
 
     return (
         <section className="bg-[#f5f0e8]">
