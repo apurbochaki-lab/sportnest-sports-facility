@@ -2,7 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { Button, Card, DateField, Label } from "@heroui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const BookingCard = ({ sportsDetails }) => {
@@ -16,7 +16,7 @@ const BookingCard = ({ sportsDetails }) => {
     const [date, setDate] = useState(null)
     // console.log(new Date(date))
 
-    const handleBooking = async() => {
+    const handleBooking = async () => {
         const bookingData = {
             userName: user?.name,
             userEmail: user?.email,
@@ -32,15 +32,21 @@ const BookingCard = ({ sportsDetails }) => {
         }
         // console.log(bookingData)
 
+        // Identify Token
+        const { data: tokenData } = await authClient.token()
+        const token = tokenData?.token
+        // console.log(token)
+
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/bookings`, {
             method: "POST",
             headers: {
-                'Content-Type' : 'application/json'
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(bookingData)
         })
         const data = await res.json();
-        console.log(data)
+        // console.log(data)
         if (data.acknowledged) {
             toast.success("Booking Done")
         }
@@ -48,6 +54,7 @@ const BookingCard = ({ sportsDetails }) => {
             toast.error("Something went wrong! Try later.")
         }
     }
+
 
     return (
         <div className="">

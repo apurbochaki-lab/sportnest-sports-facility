@@ -1,5 +1,7 @@
 import BookingCard from "@/components/sports-details-page/BookingCard";
+import { auth } from "@/lib/auth";
 import { getDataById } from "@/lib/data";
+import { headers } from "next/headers";
 import Image from "next/image";
 import {
     FaMapMarkerAlt,
@@ -13,7 +15,13 @@ import {
 const sportsDetailsPage = async ({ params }) => {
     const { id } = await params;
 
-    const sportsDetails = await getDataById(id)
+    // Identify Token
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    // console.log(token)
+
+    const sportsDetails = await getDataById(id, token)
     // console.log(sportsDetails)
 
     const {

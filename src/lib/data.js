@@ -6,8 +6,12 @@ export const getAllData = async (search = "") => {
 }
 
 
-export const getDataById = async (id) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports/${id}`);
+export const getDataById = async (id, token) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
     return await res.json();
 }
 
