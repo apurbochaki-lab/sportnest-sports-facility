@@ -44,12 +44,17 @@ const EditModal = ({ facility: facilityData }) => {
     } = facilityData;
 
     const { data: session } = authClient.useSession()
-    const userEmail = session?.user?.email;
+    const currentUserEmail = session?.user?.email;
 
     const [open, setOpen] = useState(false)
 
-    const handleEditData = async(e) => {
+    const handleEditData = async (e) => {
         e.preventDefault();
+
+        // Identify Token
+        const { data: tokenData } = await authClient.token()
+        const token = tokenData?.token;
+        // console.log("token from Edit --> 🟢", token)
 
         const formData = new FormData(e.target);
         const itemData = Object.fromEntries(formData.entries())
@@ -58,18 +63,24 @@ const EditModal = ({ facility: facilityData }) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`, {
             method: 'PATCH',
             headers: {
-                'Content-Type' : 'application/json',
-                id : _id
+                'Content-Type': 'application/json',
+                id: _id,
+                currentuser: currentUserEmail,
+                authorization: `Bearer ${token}`
             },
             body: JSON.stringify(itemData)
         })
         const data = await res.json();
         console.log(data)
 
-        if (data.modifiedCount > 0) {
-            toast.success("Your data is updated!")
+        if (data.success) {
+            toast.success(data.message)
             redirect('/all-facilities')
         }
+        else {
+            toast.error(data.message)
+        }
+
     }
 
     return (
@@ -502,7 +513,7 @@ const EditModal = ({ facility: facilityData }) => {
 
                                             <TextField
                                                 name="userEmail"
-                                                defaultValue={userEmail}
+                                                defaultValue={currentUserEmail}
                                                 type="email"
                                                 isRequired
                                             >

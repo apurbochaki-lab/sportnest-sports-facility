@@ -15,7 +15,7 @@ const AllFacilitiesPage = () => {
     // console.log(facilities)
 
     const [token, setToken] = useState(null)
-    console.log(token)
+    // console.log(token)
 
     useEffect(() => {
         const getToken = async () => {
