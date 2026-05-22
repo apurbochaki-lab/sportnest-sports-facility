@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏟️ Sport Nest
 
-## Getting Started
+A modern and responsive sports facility booking management platform where users can explore sports facilities, book available time slots, and manage their own facilities seamlessly.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 Purpose
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Sport Nest is built to simplify the process of discovering and booking sports facilities online.  
+The platform allows users to:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Explore available sports facilities
+- Book facilities for specific dates and time slots
+- Manage personal bookings
+- Add and manage their own sports facilities
+- Experience a smooth and secure booking system with authentication
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🌐 Live URL
 
-To learn more about Next.js, take a look at the following resources:
+🔗 https://sportnest-sports-facility.vercel.app/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## ✨ Features
 
-## Deploy on Vercel
+- 🔐 Secure Authentication System
+- 🏟️ Browse All Sports Facilities
+- 📅 Book Facilities by Date & Time Slot
+- ➕ Add New Sports Facilities
+- 🛠️ Update & Delete Own Facilities
+- 📖 View Personal Bookings
+- ❌ Cancel Bookings Easily
+- 🔍 Search Facilities by Name
+- 🎯 Filter Facilities by Sport Type
+- ⚡ Dynamic Featured Facilities Section
+- 📱 Fully Responsive for Mobile, Tablet & Desktop
+- 🍪 JWT Authentication with HTTPOnly Cookies
+- ⏳ Smooth Loading Experience
+- 🚫 Custom 404 Not Found Page
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 NPM Packages Used
+
+### 🎨 Frontend
+- Next.js
+- React
+- Tailwind CSS
+- Framer Motion
+- Axios
+- React Hook Form
+- React Hot Toast
+- HeroUI
+- Better Auth
+- React Icons
+- SweetAlert2
+
+### ⚙️ Backend
+- Express.js
+- MongoDB
+- Cors
+- Dotenv
+- Jsonwebtoken
+- Cookie-parser
+
+---
