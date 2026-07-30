@@ -19,8 +19,9 @@ The platform allows users to:
 
 ## 🌐 Live URL
 
-🔗 **Live Link :** https://sportnest-sports-facility.vercel.app
-🛠️ **Backend Repo :** https://github.com/apurbochaki-lab/sportnest-server
+🔗 **Live Link :** [SportNest Live](https://sportnest-sports-facility.vercel.app)
+
+🛠️ **Backend Repo :** [SportNest Server](https://github.com/apurbochaki-lab/sportnest-server)
 
 ---
 
