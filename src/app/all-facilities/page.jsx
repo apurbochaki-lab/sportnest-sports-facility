@@ -1,7 +1,7 @@
 'use client'
 
 import SportsCard from '@/components/homepage/SportsCard';
-import { authClient } from '@/lib/auth-client';
+// import { authClient } from '@/lib/auth-client';
 import { X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import LoadingPage from '../loading';
@@ -10,37 +10,41 @@ import LoadingPage from '../loading';
 const AllFacilitiesPage = () => {
 
     const [search, setSearch] = useState("")
-    console.log("Search State : ", search);
+    // console.log("Search State : ", search);
     const [sports, setSports] = useState([])
-    // console.log(facilities)
+    // console.log(sports)
 
-    const [token, setToken] = useState(null)
+    const [loading, setLoading] = useState(true)
     // console.log(token)
 
-    useEffect(() => {
-        const getToken = async () => {
-            const { data: tokenData } = await authClient.token();
-            const token = tokenData?.token;
-            setToken(token)
-        }
-        getToken()
-    }, [])
+    // useEffect(() => {
+    //     const getToken = async () => {
+    //         const { data: tokenData } = await authClient.token();
+    //         const token = tokenData?.token;
+    //         setToken(token)
+    //     }
+    //     getToken()
+    // }, [])
 
     useEffect(() => {
-        if (!token) return;
-
+        // if (!loading) return;
         const getData = async () => {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports?search=${search}`, {
-                headers: {
-                    authorization: `Bearer ${token}`
-                }
-            });
-            const data = await res.json();
-            setSports(data)
-            // setSports(Array.isArray(data) ? data : [])
+            setLoading(true)
+
+            try {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports?search=${search}`);
+                const data = await res.json();
+                setSports(data)
+                // setSports(Array.isArray(data) ? data : [])
+            } catch (error) {
+                console.error(error || "Something went wrong fetching sports data")
+            }
+            finally {
+                setLoading(false)
+            }
         }
         getData()
-    }, [search, token])
+    }, [search])
 
     // const sports = await getAllData()
     // console.log(sports)
@@ -48,7 +52,7 @@ const AllFacilitiesPage = () => {
     return (
         <section className='bg-[#fefae0] pb-20'>
             <div className="container mx-auto">
-                {!token ? <LoadingPage /> : (
+                {loading ? <LoadingPage /> : (
                     <div>
                         <h2 className='text-center text-3xl md:text-5xl font-bold pt-10 pb-5 text-[#606c38]'>All Facilities</h2>
 
@@ -88,6 +92,8 @@ const AllFacilitiesPage = () => {
                         </div>
                     </div>
                 )}
+
+
 
             </div>
         </section>
