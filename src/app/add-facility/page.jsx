@@ -6,15 +6,18 @@ import { redirect } from "next/navigation";
 
 const AddFacilityPage = () => {
 
-    const {data: session} = authClient.useSession()
+    const { data: session } = authClient.useSession()
     const userEmail = session?.user?.email;
 
     const handleAddSports = async (e) => {
         e.preventDefault();
 
         const formData = new FormData(e.target);
-        const sportsData = Object.fromEntries(formData.entries());
-        // console.log(sportsData)
+        const objectData = Object.fromEntries(formData.entries());
+        const sportsData = {
+            ...objectData,
+            userEmail
+        }
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports`, {
             method: "POST",
@@ -27,7 +30,7 @@ const AddFacilityPage = () => {
         // console.log(data);
 
         if (data.acknowledged) {
-            redirect('/all-facilities')
+            redirect('/manage-facilities')
         }
     }
 
@@ -234,7 +237,7 @@ const AddFacilityPage = () => {
                                     className="w-full px-3.5 py-2.5 bg-white border-[1.5px] border-[#c8c4a0] rounded-xl text-sm text-[#283618] outline-none focus:border-[#606c38] focus:ring-2 focus:ring-[#606c38]/20 transition-all" />
                             </div>
                         </div>
-                        <div>
+                        {/* <div>
                             <h2 className="text-xs font-bold uppercase tracking-widest text-[#606c38] border-b-2 border-[#dda15e] pb-1.5 mb-4">
                                 📩 Contact Email
                             </h2>
@@ -243,7 +246,7 @@ const AddFacilityPage = () => {
                                 <input type="email" name="userEmail" placeholder="" defaultValue={userEmail}
                                     className="w-full px-3.5 py-2.5 bg-white border-[1.5px] border-[#c8c4a0] rounded-xl text-sm text-[#283618] outline-none focus:border-[#606c38] focus:ring-2 focus:ring-[#606c38]/20 transition-all" />
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* Submit Button */}
                         <Button type="submit"

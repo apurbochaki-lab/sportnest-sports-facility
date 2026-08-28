@@ -9,6 +9,15 @@ export const getAllData = async (token) => {
     return data;
 }
 
+export const myFacilities = async (token, userEmail) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/my-facilities?userEmail=${userEmail}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    });
+    return res.json();
+}
+
 
 export const getDataById = async (id, token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/sports/${id}`, {

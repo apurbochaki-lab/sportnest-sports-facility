@@ -71,11 +71,10 @@ const EditModal = ({ facility: facilityData }) => {
             body: JSON.stringify(itemData)
         })
         const data = await res.json();
-        console.log(data)
 
         if (data.success) {
             toast.success(data.message)
-            redirect('/all-facilities')
+            redirect('/manage-facilities')
         }
         else {
             toast.error(data.message)
@@ -511,7 +510,7 @@ const EditModal = ({ facility: facilityData }) => {
                                                 <FieldError />
                                             </TextField>
 
-                                            <TextField
+                                            {/* <TextField
                                                 name="userEmail"
                                                 defaultValue={currentUserEmail}
                                                 type="email"
@@ -525,7 +524,7 @@ const EditModal = ({ facility: facilityData }) => {
                                                 />
 
                                                 <FieldError />
-                                            </TextField>
+                                            </TextField> */}
 
                                         </div>
                                     </div>

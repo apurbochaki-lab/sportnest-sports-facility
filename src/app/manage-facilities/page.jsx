@@ -1,4 +1,4 @@
-import { getAllData } from "@/lib/data";
+import { getAllData, myFacilities } from "@/lib/data";
 import { Button } from "@heroui/react";
 import { Plus } from "@gravity-ui/icons";
 import Link from "next/link";
@@ -9,13 +9,21 @@ import { headers } from "next/headers";
 const ManageMyFacilities = async () => {
 
     // Identify Token
-    const {token} = await auth.api.getToken({
+    const { token } = await auth.api.getToken({
         headers: await headers()
     })
-    // console.log(token)
 
-    const facilities = await getAllData(token)
-    // console.log(facilities)
+    if (!token) return;
+
+    // User session
+    const session = await auth.api.getSession({
+        headers: await headers()
+    })
+    const userEmail = session?.user?.email;
+
+    // Date fetching
+    const facilities = await myFacilities(token, userEmail)
+
 
     return (
         <section className="bg-[#f5f0e8]">
