@@ -26,6 +26,7 @@ const AllFacilitiesPage = () => {
     //     getToken()
     // }, [])
 
+    // Removed token related codes
     useEffect(() => {
         // if (!loading) return;
         const getData = async () => {
